@@ -1,13 +1,24 @@
 package fr.rouen.mastergil.tptest;
 
+<<<<<<< HEAD
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+=======
+/**
+ * Created by rudy on 22/02/16.
+ */
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+>>>>>>> upstream/TP2
 public class MoneyTest {
 
     @Test
     public void constructeurVideDoitRemplirMontantEtDevise() {
+<<<<<<< HEAD
         Money testMoney = new Money();
 
         assertEquals(0, testMoney.getMontant());
@@ -79,3 +90,47 @@ public class MoneyTest {
 
     }
 }
+=======
+        Money money = new Money();
+
+        assertEquals(0, money.getMontant());
+        assertEquals(Devise.EURO, money.getDevise());
+    }
+
+    @Test
+    public void constructeurDoitRemplirMontantEtDevise() {
+        Money money = new Money(5, Devise.EURO);
+
+        assertEquals(5, money.getMontant());
+        assertEquals(Devise.EURO, money.getDevise());
+    }
+
+    @Test
+    public void constructeurInterditDeviseInconnueOuVide() {
+        try {
+            new Money(5, null);
+            fail("Une devise null n'est pas autorisée");
+        } catch (IllegalArgumentException iae) {
+            ; // comportement normal
+        }
+    }
+
+    @Test
+    public void isPositifDoitRetournerFalseSiLeMontantEstNegatif() {
+        Money money = new Money();
+        money.setMontant(-2);
+        final boolean isPositif = money.isPositif();
+        assertFalse(isPositif);
+    }
+
+    @Test
+    public void isPositifDoitRetournerTrueSiLeMontantEstPositif() {
+        Money money = new Money();
+        money.setMontant(2);
+        final boolean isPositif = money.isPositif();
+        assertTrue(isPositif);
+    }
+
+
+}
+>>>>>>> upstream/TP2
