@@ -1,136 +1,115 @@
 package fr.rouen.mastergil.tptest;
 
-<<<<<<< HEAD
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
-=======
-/**
- * Created by rudy on 22/02/16.
- */
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
->>>>>>> upstream/TP2
 public class MoneyTest {
 
     @Test
     public void constructeurVideDoitRemplirMontantEtDevise() {
-<<<<<<< HEAD
+        //given
+
+        //when
         Money testMoney = new Money();
 
-        assertEquals(0, testMoney.getMontant());
-        assertEquals(Devise.EURO, testMoney.getDevise());
+        //then
+        assertThat(testMoney.getMontant()).isEqualTo(0);
+        assertThat(testMoney.getDevise()).isEqualTo(Devise.EURO);
     }
 
     @Test
     public void constructeurAvecParametreDoitRemplirMontantEtDevise() {
-        Money testMoney = new Money(5, Devise.DINAR);
+        //given
+        int montant = 5;
+        Devise devise = Devise.DINAR;
 
-        assertEquals(5, testMoney.getMontant());
-        assertEquals(Devise.DINAR, testMoney.getDevise());
+        //when
+        Money testMoney = new Money(montant, devise);
+
+        //then
+        assertThat(testMoney.getMontant()).isEqualTo(montant);
+        assertThat(testMoney.getDevise()).isEqualTo(devise);
     }
 
     @Test
     public void isPositifRenvoieTruePourMontantEgal0() {
+        //given
+
+        //when
         Money testMoney = new Money();
 
-        assertTrue(testMoney.isPositif());
+        //then
+        assertThat(testMoney.isPositif()).isTrue();
     }
 
     @Test
     public void isPositifRenvoieTruePourMontantPositif() {
+        //given
         Money testMoney = new Money();
+        int montant = 5;
 
-        testMoney.setMontant(5);
+        //when
+        testMoney.setMontant(montant);
 
-        assertTrue(testMoney.isPositif());
+        //then
+        assertThat(testMoney.isPositif()).isTrue();
     }
 
     @Test
     public void isPositifRenvoieFalsePourMontantNegatif() {
+        //given
         Money testMoney = new Money();
+        int montant = -5;
 
-        testMoney.setMontant(-5);
+        //when
+        testMoney.setMontant(montant);
 
-        assertFalse(testMoney.isPositif());
+        //then
+        assertThat(testMoney.isPositif()).isFalse();
     }
 
     @Test
     public void setMontantRempliBienLeMontant() {
+        //given
         Money testMoney = new Money();
+        int montant = 5;
 
-        testMoney.setMontant(5);
+        //when
+        testMoney.setMontant(montant);
 
-        assertEquals(5, testMoney.getMontant());
+        //then
+        assertThat(testMoney.getMontant()).isEqualTo(montant);
     }
 
     @Test
     public void setDeviseRenvoiBienUneException() {
+        //given
         Money testMoney = new Money();
 
         try {
+            //when
             testMoney.setDevise(null);
             fail("Devise doit être spécifiée");
         } catch(IllegalArgumentException e) {
-
+            //then
         }
 
     }
 
     @Test
     public void setDeviseRempliBienDevise() {
+        //given
         Money testMoney = new Money();
+        Devise devise = Devise.DOLLAR;
 
-        testMoney.setDevise(Devise.DOLLAR);
+        //when
+        testMoney.setDevise(devise);
 
-        assertEquals(Devise.DOLLAR, testMoney.getDevise());
+        //then
+        assertThat(testMoney.getDevise()).isEqualTo(devise);
 
     }
 }
-=======
-        Money money = new Money();
 
-        assertEquals(0, money.getMontant());
-        assertEquals(Devise.EURO, money.getDevise());
-    }
-
-    @Test
-    public void constructeurDoitRemplirMontantEtDevise() {
-        Money money = new Money(5, Devise.EURO);
-
-        assertEquals(5, money.getMontant());
-        assertEquals(Devise.EURO, money.getDevise());
-    }
-
-    @Test
-    public void constructeurInterditDeviseInconnueOuVide() {
-        try {
-            new Money(5, null);
-            fail("Une devise null n'est pas autorisée");
-        } catch (IllegalArgumentException iae) {
-            ; // comportement normal
-        }
-    }
-
-    @Test
-    public void isPositifDoitRetournerFalseSiLeMontantEstNegatif() {
-        Money money = new Money();
-        money.setMontant(-2);
-        final boolean isPositif = money.isPositif();
-        assertFalse(isPositif);
-    }
-
-    @Test
-    public void isPositifDoitRetournerTrueSiLeMontantEstPositif() {
-        Money money = new Money();
-        money.setMontant(2);
-        final boolean isPositif = money.isPositif();
-        assertTrue(isPositif);
-    }
-
-
-}
->>>>>>> upstream/TP2
