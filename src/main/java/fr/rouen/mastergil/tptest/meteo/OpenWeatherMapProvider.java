@@ -20,7 +20,6 @@ public class OpenWeatherMapProvider implements IWeatherProvider {
     private final static String URL_BASE = "http://api.openweathermap.org/data/2.5";
 
 
-    @Override
     public List<Prevision> getForecastByCity(String city) {
         List<Prevision> previsions = new ArrayList<Prevision>();
         ClientConfig clientConfig = new DefaultClientConfig();
