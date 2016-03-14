@@ -166,6 +166,16 @@ public class BowlingCalculatorTest {
     }
 
 
+    @Test
+    public void score_avec_deux_spares_a_la_suite() throws Exception {
+        //Given
+        String score = "1/;1/;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(21);
+    }
+
 
 
 
