@@ -207,4 +207,18 @@ public class BowlingCalculatorTest {
         //Then
         assertThat(resultat).isEqualTo(190);
     }
+
+
+    @Test
+    public void score_avec_eight_spares_et_double_strike_a_la_fin() throws Exception {
+        //Given
+        String score = "9/;9/;9/;9/;9/;9/;9/;9/;9/;xx9";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(201);
+
+    }
+
+
 }
