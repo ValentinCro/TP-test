@@ -134,5 +134,30 @@ public class BowlingCalculatorTest {
     }
 
 
+    @Test
+    public void score_avec_strike() throws Exception {
+        //Given
+        String score = "x;--;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(10);
+    }
+
+
+    @Test
+    public void score_avec_strike_et_un_lancer_apres() throws Exception {
+        //Given
+        String score = "x;1-;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(12);
+    }
+
+
+
+
+
 
 }
