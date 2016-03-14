@@ -15,6 +15,10 @@ public class BowlingCalculator {
             Frame frame = frames.get(i);
             score += frame.getS1int();
             score += frame.getS2int();
+            if (frame.isSpare()) {
+                Frame nextFrame = frames.get(i + 1);
+                score += nextFrame.getScore(nextFrame.getS1());
+            }
         }
         return score;
     }

@@ -58,6 +58,81 @@ public class BowlingCalculatorTest {
     }
 
 
+    @Test
+    public void score_avec_des_valeurs_identiques_aux_premiers_lancers() throws Exception {
+        //Given
+        String score = "1-;1-;1-;1-;1-;1-;1-;1-;1-;1-";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(10);
+    }
+
+
+    @Test
+    public void score_avec_des_valeurs_differentes_aux_premiers_lancers() throws Exception {
+        //Given
+        String score = "1-;2-;3-;4-;5-;6-;7-;8-;9-;1-";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(46);
+    }
+
+
+    @Test
+    public void score_avec_un_premier_lancer_reussi() throws Exception {
+        //Given
+        String score = "12;--;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(3);
+    }
+
+    @Test
+    public void score_avec_divers_lancer() throws Exception {
+        //Given
+        String score = "12;-2;-1;-9;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(15);
+    }
+
+
+    @Test
+    public void score_avec_divers_lancer2() throws Exception {
+        //Given
+        String score = "12;--;--;--;--;--;--;--;--;-1-";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(4);
+    }
+
+
+    @Test
+    public void score_avec_spare() throws Exception {
+        //Given
+        String score = "1/;--;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(10);
+    }
+
+
+    @Test
+    public void score_avec_spare_et_un_lancer_apres() throws Exception {
+        //Given
+        String score = "1/;1-;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(12);
+    }
+
 
 
 }
