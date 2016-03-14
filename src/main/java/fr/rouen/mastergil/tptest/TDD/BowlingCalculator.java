@@ -27,10 +27,13 @@ public class BowlingCalculator {
                     score += nextFrame.getScore(nextFrame.getS1());
                     if (frame.isStrike()) {
                         if (nextFrame.isStrike()) {
-                            Frame nextNextFrame = frames.get(i + 2);
-                            score += nextNextFrame.getScore(nextNextFrame.getS1());
+                            if (i == frames.size() - 2) {
+                                score += nextFrame.getScore(nextFrame.getS2());
+                            } else {
+                                Frame nextNextFrame = frames.get(i + 2);
+                                score += nextNextFrame.getScore(nextNextFrame.getS1());
+                            }
                         }
-
                         if (nextFrame.isSpare()) {
                             score += 10 - nextFrame.getScore(nextFrame.getS1());
                         } else {

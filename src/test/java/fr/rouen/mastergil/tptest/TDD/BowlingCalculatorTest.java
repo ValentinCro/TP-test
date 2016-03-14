@@ -221,4 +221,139 @@ public class BowlingCalculatorTest {
     }
 
 
+    @Test
+    public void score_avec_291_game() throws Exception {
+        //Given
+        String score = "x-;x-;x-;x-;x-;x-;x-;x-;x-;xx1";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(291);
+
+    }
+
+    @Test
+    public void score_avec_300() throws Exception {
+        //Given
+        String score = "x;x;x;x;x;x;x;x;x;xxx";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(300);
+
+    }
+
+    @Test
+    public void score_avec_277() throws Exception {
+        //Given
+        String score = "x;x;8/;x;x;x;x;x;x;xx9";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(277);
+    }
+
+    @Test
+    public void should_simple_score_only_in_frame1() throws Exception {
+        //Given
+        String feuilleDeScore = "1-;2-;3-;4-;5-;6-;7-;8-;9-;1-";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(46);
+    }
+
+    @Test
+    public void should_simple_score_with_frame1_and_frame2() throws Exception {
+        //Given
+        String feuilleDeScore = "11;22;33;44;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(62);
+    }
+
+    @Test
+    public void should_score_with_frame1_and_frame2_and_1spare() throws Exception {
+        //Given
+        String feuilleDeScore = "11;2/;33;44;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(71);
+    }
+
+    @Test
+    public void should_score_with_frame1_and_frame2_and_2spares() throws Exception {
+        //Given
+        String feuilleDeScore = "11;2/;33;4/;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(78);
+    }
+
+    @Test
+    public void should_score_with_frame1_and_frame2_and_3spares() throws Exception {
+        //Given
+        String feuilleDeScore = "11;2/;3/;4/;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(86);
+    }
+
+    @Test
+    public void should_score_with_frame1_and_frame2_and_1strike() throws Exception {
+        //Given
+        String feuilleDeScore = "11;x;33;44;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(74);
+    }
+
+    @Test
+    public void should_score_with_frame1_and_frame2_and_2strikes() throws Exception {
+        //Given
+        String feuilleDeScore = "11;x;x;44;51;62;71;81;9-;11";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(94);
+    }
+
+
+    @Test
+    public void should_score_200() throws Exception {
+        //Given
+        String feuilleDeScore = "x;8/;x;9/;x;7/;x;6/;x;1/x";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(200);
+    }
+
+
+    @Test
+    public void should_score_9spare_all_frame() throws Exception {
+        //Given
+        String feuilleDeScore = "9/;9/;9/;9/;9/;9/;9/;9/;9/;9/9";
+        final BowlingCalculator bowlingCalculator = new BowlingCalculator();
+        //When
+        final int score = bowlingCalculator.score(feuilleDeScore);
+        //Then
+        assertThat(score).isEqualTo(190);
+    }
+
+
+
 }
