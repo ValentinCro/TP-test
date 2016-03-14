@@ -176,6 +176,26 @@ public class BowlingCalculatorTest {
         assertThat(resultat).isEqualTo(21);
     }
 
+    @Test
+    public void score_avec_un_spare_et_un_strike() throws Exception {
+        //Given
+        String score = "-/;x;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(30);
+    }
+
+
+    @Test
+    public void score_avec_deux_spares_deux_strike_et_un_lancer_apres() throws Exception {
+        //Given
+        String score = "-/;2/;x;--;--;x;--;12;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(55);
+    }
 
 
 

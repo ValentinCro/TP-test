@@ -18,6 +18,10 @@ public class BowlingCalculator {
             if (frame.isSpare() || frame.isStrike()) {
                 Frame nextFrame = frames.get(i + 1);
                 score += nextFrame.getScore(nextFrame.getS1());
+                if (frame.isStrike()) {
+                    Frame nextNextFrame = frames.get(i + 2);
+                    score += nextNextFrame.getScore(nextNextFrame.getS1());
+                }
                 if (nextFrame.isSpare()) {
                     score += 1- nextFrame.getScore(nextFrame.getS1());
                 } else {
