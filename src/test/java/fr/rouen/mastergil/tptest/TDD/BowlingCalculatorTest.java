@@ -155,6 +155,15 @@ public class BowlingCalculatorTest {
         assertThat(resultat).isEqualTo(12);
     }
 
+    @Test
+    public void score_avec_strike_et_deux_lancer_apres() throws Exception {
+        //Given
+        String score = "x;12;--;--;--;--;--;--;--;--";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(16);
+    }
 
 
 
