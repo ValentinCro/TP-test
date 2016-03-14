@@ -13,6 +13,8 @@ public class BowlingCalculator {
         int score = 0;
         for (int i = 0; i < frames.size(); i++) {
             Frame frame = frames.get(i);
+            score += frame.getS1int();
+            score += frame.getS2int();
         }
         return score;
     }
