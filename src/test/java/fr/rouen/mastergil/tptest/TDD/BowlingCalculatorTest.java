@@ -198,5 +198,13 @@ public class BowlingCalculatorTest {
     }
 
 
-
+    @Test
+    public void score_avec_nine_spares() throws Exception {
+        //Given
+        String score = "9/;9/;9/;9/;9/;9/;9/;9/;9/;9/9";
+        //When
+        int resultat = bowlingCalculator.score(score);
+        //Then
+        assertThat(resultat).isEqualTo(190);
+    }
 }
