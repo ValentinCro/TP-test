@@ -2,6 +2,9 @@ package fr.rouen.mastergil.tptest.TDD;
 
 
 import org.junit.Before;
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class BowlingCalculatorTest {
@@ -30,6 +33,26 @@ public class BowlingCalculatorTest {
     @Before
     public void setUp() throws Exception {
         bowlingCalculator = new BowlingCalculator();
+    }
+
+    @Test
+    public void score_Egale_a_0() throws Exception {
+        //Given
+        String feuilleScore = "--;--;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(0);
+    }
+
+    @Test
+    public void score_Egale_a_1() throws Exception {
+        //Given
+        String feuilleScore = "1-;--;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(1);
     }
 
 }
