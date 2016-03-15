@@ -55,4 +55,23 @@ public class BowlingCalculatorTest {
         assertThat(score).isEqualTo(1);
     }
 
+    @Test
+    public void score_avec_valeur_identique() throws Exception {
+        //Given
+        String feuilleScore = "1-;1-;1-;1-;1-;1-;1-;1-;1-;1--";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(10);
+    }
+
+    @Test
+    public void score_avec_spare() throws Exception {
+        //Given
+        String feuilleScore = "1/;1-;1-;1-;1-;1-;1-;1-;1-;1--";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(20);
+    }
 }
