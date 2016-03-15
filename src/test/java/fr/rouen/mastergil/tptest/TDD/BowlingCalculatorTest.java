@@ -106,12 +106,22 @@ public class BowlingCalculatorTest {
     }
 
     @Test
-    public void score_avec_deux_spare_a_la_suite() throws Exception {
+    public void score_avec_un_spare_et_un_strike() throws Exception {
         //Given
-        String feuilleScore = "1/;1/;--;--;--;--;--;--;--;---";
+        String feuilleScore = "1/;x;--;--;--;--;--;--;--;---";
         //When
         int score = bowlingCalculator.score(feuilleScore);
         //Then
-        assertThat(score).isEqualTo(21);
+        assertThat(score).isEqualTo(30);
+    }
+
+    @Test
+    public void score_avec_deux_spare_deux_strike_et_deux_lancé() throws Exception {
+        //Given
+        String feuilleScore = "1/;1/;x;x;22;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(71);
     }
 }

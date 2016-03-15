@@ -17,10 +17,14 @@ public class BowlingCalculator {
                 if (frames.get(i).isSpare()) {
                     score += frames.get(i + 1).getScore(frames.get(i + 1).getS1());
                 } else if (frames.get(i).isStrike()) {
+                    if (i + 1 < frames.size() - 1 && frames.get(i + 1).isStrike()) {
+                        score += frames.get(i + 2).getS1int();
+                    }
                     score += frames.get(i + 1).getS1int() + frames.get(i + 1).getS2int();
                 }
             }
             score += frame.getS1int() + frame.getS2int();
+            System.out.println(score);
         }
         return score;
     }
