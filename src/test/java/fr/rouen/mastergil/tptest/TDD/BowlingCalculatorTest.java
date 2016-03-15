@@ -84,4 +84,14 @@ public class BowlingCalculatorTest {
         //Then
         assertThat(score).isEqualTo(10);
     }
+
+    @Test
+    public void score_avec_strike_et_un_lancer() throws Exception {
+        //Given
+        String feuilleScore = "x;1-;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(12);
+    }
 }
