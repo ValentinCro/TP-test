@@ -94,4 +94,24 @@ public class BowlingCalculatorTest {
         //Then
         assertThat(score).isEqualTo(12);
     }
+
+    @Test
+    public void score_avec_strike_et_deux_lancer() throws Exception {
+        //Given
+        String feuilleScore = "x;21;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(16);
+    }
+
+    @Test
+    public void score_avec_deux_spare_a_la_suite() throws Exception {
+        //Given
+        String feuilleScore = "1/;1/;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(21);
+    }
 }

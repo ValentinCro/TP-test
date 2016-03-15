@@ -13,10 +13,12 @@ public class BowlingCalculator {
         int score = 0;
         for (int i = 0; i < frames.size(); i++) {
             Frame frame = frames.get(i);
-            if (i > 0 && frames.get(i - 1).isSpare()) {
-                score += frame.getS1int();
-            } else if (i > 0 && frames.get(i - 1).isStrike()) {
-                score += frame.getS1int() + frame.getS2int();
+            if (i < frames.size() - 1) {
+                if (frames.get(i).isSpare()) {
+                    score += frames.get(i + 1).getScore(frames.get(i + 1).getS1());
+                } else if (frames.get(i).isStrike()) {
+                    score += frames.get(i + 1).getS1int() + frames.get(i + 1).getS2int();
+                }
             }
             score += frame.getS1int() + frame.getS2int();
         }
