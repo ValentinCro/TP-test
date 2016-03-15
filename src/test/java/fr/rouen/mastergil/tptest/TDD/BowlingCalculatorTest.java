@@ -74,4 +74,14 @@ public class BowlingCalculatorTest {
         //Then
         assertThat(score).isEqualTo(20);
     }
+
+    @Test
+    public void score_avec_strike() throws Exception {
+        //Given
+        String feuilleScore = "x;--;--;--;--;--;--;--;--;---";
+        //When
+        int score = bowlingCalculator.score(feuilleScore);
+        //Then
+        assertThat(score).isEqualTo(10);
+    }
 }
