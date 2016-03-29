@@ -6,10 +6,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class NwxPage extends FluentPage {
     public String getUrl() {
-        return "https://cfp.devoxx.fr/2016/index.html";
+        return "http://www.nwx.fr/membres";
     }
 
     public void isAt() {
-        assertThat(title()).isEqualTo("Schedule ∞ Devoxx");
+        assertThat(title()).isEqualTo("Membres | #NWX : association Normandie Web Xperts");
     }
 }

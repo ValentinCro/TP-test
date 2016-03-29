@@ -10,6 +10,6 @@ public class CpfDevoxxPage extends FluentPage {
     }
 
     public void isAt() {
-        assertThat(title()).isEqualTo("Schedule &infin; Devoxx");
+        assertThat(title()).isEqualTo("Schedule ∞ Devoxx");
     }
 }

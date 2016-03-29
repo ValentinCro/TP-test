@@ -1,4 +1,4 @@
-package fr.rouen.mastergil.fluentlenium;
+package fr.rouen.mastergil.tptest.fluentlenium;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
